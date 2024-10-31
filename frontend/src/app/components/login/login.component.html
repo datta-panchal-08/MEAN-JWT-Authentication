@@ -1,0 +1,34 @@
+<div class="login">
+    <div class="fields">
+        <div class="header">
+            <h1>Login</h1>
+        </div>
+        <form [formGroup]="loginForm">
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="text" placeholder="Enter Email" formControlName="email">
+                <div class="errors" *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+                    Please Enter Your Email
+                </div>
+                <div class="errors" *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
+                    Please Enter A Valid Email
+                </div>
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" placeholder="Enter Password">
+                <div class="errors" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+                    Please Enter Your Password
+                </div>
+            </div>
+            <div class="forgot">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button (click)="onSubmit()">Submit</button>
+            <div class="text">
+                <p>or signup using</p>
+                <a routerLink="/register" routerLinkActive="true">SignUp</a>
+            </div>
+        </form>
+    </div>
+</div>
